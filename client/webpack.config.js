@@ -33,12 +33,13 @@ module.exports = () => {
         fingerprints: false,
         inject: true,
         name: 'Just Another Text Editor',
-        short_name: 'JATE',
-        description: 'A text editor that runs in the browser.',
+        short_name: 'J.A.T.E.',
+        description: 'Take notes with JavaScript syntax highlighting!',
         background_color: '#225ca3',
         theme_color: '#225ca3',
         start_url: './',
         publicPath: './',
+        id: './',
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
@@ -54,6 +55,10 @@ module.exports = () => {
         {
           test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource',
         },
         {
           test: /\.m?js$/,
