@@ -24,6 +24,7 @@ With its offline support, users can continue working uninterrupted even without 
 - [Questions](#questions)
 
 ## Deployment
+The Text Editor PWA is deployed on Heroku. You can access the live application [here](https://justanothertextedit-5400b8b59bb6.herokuapp.com/).
 
 ## Installation
 1. Clone the starter code repository to your local machine.
@@ -59,6 +60,7 @@ With its offline support, users can continue working uninterrupted even without 
    - This installation feature enhances accessibility, allowing you to launch the text editor directly from your device's home screen or application menu.
 
 ### Screenshots
+![text-editor](assets/images/text-editor.png)
 
 ## License
 This application is covered by the [MIT](https://opensource.org/licenses/MIT) license.
