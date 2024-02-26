@@ -19,22 +19,30 @@ const initdb = async () =>
 
 // Asynchronous function to store data in the IndexedDB database
 export const putDb = async (content) => {
-  const jateDb = await openDB('jate', 1); // Opening the 'jate' database with version 1
-  const tx = jateDb.transaction('jate', 'readwrite'); // Starting a read-write transaction on the 'jate' object store
-  const store = tx.objectStore('jate'); // Getting a reference to the 'jate' object store
-  const request = store.put({ id: 1, text: content }); // Putting the provided content into the object store with key 1
-  const result = await request; // Waiting for the put operation to complete and storing the result
-  console.log('Data saved to the database', result); // Logging a message indicating that data was successfully saved to the database
+  try {
+    const jateDb = await openDB('jate', 1); // Opening the 'jate' database with version 1
+    const tx = jateDb.transaction('jate', 'readwrite'); // Starting a read-write transaction on the 'jate' object store
+    const store = tx.objectStore('jate'); // Getting a reference to the 'jate' object store
+    const request = store.put({ id: 1, text: content }); // Putting the provided content into the object store with key 1
+    const result = await request; // Waiting for the put operation to complete and storing the result
+    console.log('Data saved to the database', result); // Logging a message indicating that data was successfully saved to the database
+  } catch (error) {
+    console.error('Error saving data to the database', error); // Logging an error message if there was an error saving data to the database
+  }
 };
 
 // Asynchronous function to retrieve data from the IndexedDB database
 export const getDb = async () => {
-  const jateDb = await openDB('jate', 1); // Opening the 'jate' database with version 1
-  const tx = jateDb.transaction('jate', 'readonly'); // Starting a read-only transaction on the 'jate' object store
-  const store = tx.objectStore('jate'); // Getting a reference to the 'jate' object store
-  const request = store.getAll(); // Getting all the data stored in the object store
-  const result = await request; // Waiting for the getAll operation to complete and storing the result
-  console.log('Data retrieved from the database', result); // Logging a message indicating that data was retrieved from the database
+  try {
+    const jateDb = await openDB('jate', 1); // Opening the 'jate' database with version 1
+    const tx = jateDb.transaction('jate', 'readonly'); // Starting a read-only transaction on the 'jate' object store
+    const store = tx.objectStore('jate'); // Getting a reference to the 'jate' object store
+    const request = store.getAll(); // Getting all the data stored in the object store
+    const result = await request; // Waiting for the getAll operation to complete and storing the result
+    console.log('Data retrieved from the database', result); // Logging a message indicating that data was retrieved from the database
+  } catch (error) {
+    console.error('Error retrieving data from the database', error); // Logging an error message if there was an error retrieving data from the database
+  }
 };
 
 initdb(); // Initializing the IndexedDB database when this module is imported
